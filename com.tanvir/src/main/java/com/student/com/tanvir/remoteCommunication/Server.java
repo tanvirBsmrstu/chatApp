@@ -1,12 +1,13 @@
-package com.student.com.tanvir;
+package com.student.com.tanvir.remoteCommunication;
 
+import com.student.com.tanvir.main.*;
+import com.student.com.tanvir.util.*;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-
 
 /**
  * @author tanvirhasan
@@ -15,22 +16,22 @@ import java.net.Socket;
  */
 public class Server extends ServerClientBaseClass{
 	ServerSocket sSocket;
-	
-	Server(){
+
+	public Server(){
 		super(new Player("Player(server)"));
 	}
 
 	public void serverStartListening() throws IOException {
 
-		 sSocket = new ServerSocket(Configuration.getSharedInstance().getPort());
-		
+		sSocket = new ServerSocket(Configuration.getSharedInstance().getPort());
+
 		view.serverIsWaitingForConnection();
 		Socket clientSocket = sSocket.accept(); //connecting to server 
 		view.connectedMessage();
-		
+
 		setInputStream(new DataInputStream(clientSocket.getInputStream())); // dependency Injection
 		setOutputStream( new DataOutputStream(clientSocket.getOutputStream())); // dependency Injection
-		
+
 		initiate(clientSocket);
 
 		view.clientIsClosing();
@@ -38,7 +39,6 @@ public class Server extends ServerClientBaseClass{
 		view.serverIsClosing();
 		sSocket.close();	
 	}
-
 
 	/**
 	 * start messaging with client socket
@@ -54,6 +54,6 @@ public class Server extends ServerClientBaseClass{
 	protected void finalize() throws Throwable {
 		if (!sSocket.isClosed()) sSocket.close(); /// to release port safely
 	}
-	
+
 
 }

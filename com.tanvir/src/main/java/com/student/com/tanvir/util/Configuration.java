@@ -1,5 +1,4 @@
-package com.student.com.tanvir;
-
+package com.student.com.tanvir.util;
 
 /**
  * @author tanvirhasan
@@ -11,13 +10,13 @@ public class Configuration {
 	private final String serverCommand;
 	private final String clientCommand;
 	private final String endCommand;
-	
+
 	private String firstLetter;	
 	private String address;
 	private int port;
 
 	private static Configuration sharedInstance = new Configuration();
-	
+
 	private Configuration() {
 		endCommand 		= "##@#^$";
 		firstLetter 	= "Hello ";
@@ -66,7 +65,4 @@ public class Configuration {
 	public String getEndCommand() {
 		return endCommand;
 	}
-	
-	
-	
 }

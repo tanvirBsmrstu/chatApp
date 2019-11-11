@@ -1,16 +1,13 @@
+package com.student.com.tanvir.remoteCommunication;
 
+import com.student.com.tanvir.main.*;
+import com.student.com.tanvir.util.*;
 
-
-
-
-
-package com.student.com.tanvir;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 
 /**
  * @author tanvirhasan
@@ -19,17 +16,18 @@ import java.net.UnknownHostException;
  */
 public class Client extends ServerClientBaseClass{
 	Socket socket;
-	Client(){
+
+	public Client(){
 		super(new Player("Player(client)"));
 	}
-	
+
 	public  void connectToServer() throws UnknownHostException, IOException{	
 		socket = new Socket(Configuration.getSharedInstance().getAddress(), Configuration.getSharedInstance().getPort());
 		view.connectedMessage();
-		
+
 		setInputStream(new DataInputStream(socket.getInputStream())); // dependency Injection
 		setOutputStream(new DataOutputStream(socket.getOutputStream())); // dependency Injection
-		
+
 		communicate(socket); //call super class method to communicate to the other end
 		view.clientIsClosing();
 		socket.close();
@@ -38,5 +36,5 @@ public class Client extends ServerClientBaseClass{
 	protected void finalize() throws Throwable {
 		if (!socket.isClosed()) socket.close(); /// to release port safely
 	}
-	
+
 }

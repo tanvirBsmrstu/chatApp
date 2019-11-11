@@ -1,5 +1,6 @@
-package com.student.com.tanvir;
+package com.student.com.tanvir.main;
 
+import com.student.com.tanvir.util.*;
 
 import java.io.DataOutputStream;
 
@@ -23,7 +24,7 @@ public class Player implements Runnable{
 	private Player receiver;
 	private String name;
 
-	Player(String name){
+	public Player(String name){
 		postBox = new Postbox();
 		view = new View();
 		this.name = name;

@@ -1,8 +1,9 @@
-package com.student.com.tanvir;
+package com.student.com.tanvir.main;
+
+import com.student.com.tanvir.util.*;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
-
 
 /**
  * @author tanvirhasan
@@ -10,19 +11,20 @@ import java.io.DataOutputStream;
  *incoming letters will be stored here and outgoing letters will be send from here
  */
 public class Postbox {
-	
+
 	private String letter; // works like an storage to store incoming letter
 	RWOperationWithStream<String> rw ; //read,write operations related to streams
-	
+
 	Postbox(){
 		letter = null;
 		rw = new RWOperationWithStream<String>();
-		
+
 	}
 
 	public void postLetter(String letter) {
 		this.letter = letter;
 	}
+
 	/**
 	 * Takes the letter out from the post box
 	 * @return
@@ -32,7 +34,7 @@ public class Postbox {
 		letter = null;
 		return msg;
 	}
-	
+
 	/**
 	 * An overloaded method, takes the letter out from the remote end
 	 * @param in inputStream
@@ -42,7 +44,7 @@ public class Postbox {
 		String msg = rw.readData(in);
 		return msg;
 	}
-	
+
 	/**
 	 * checks whether the postBox is empty or there is a letter.
 	 * @return
@@ -50,7 +52,7 @@ public class Postbox {
 	public Boolean isLetterAvailable() {
 		return !(letter == null);
 	}
-	
+
 	/**
 	 * it sends the letter to the receiver when both are not in the same java thread
 	 * @param letter
