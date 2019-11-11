@@ -15,4 +15,4 @@ do
     
     esac
 done
-echo Thanks
+echo Thank you

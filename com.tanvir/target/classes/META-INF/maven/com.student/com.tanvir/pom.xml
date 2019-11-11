@@ -44,7 +44,7 @@
 			<configuration>
 			  <archive>
 			    <manifest>
-					<mainClass>com.student.com.tanvir.Main</mainClass>
+					<mainClass>com.student.com.tanvir.main.Main</mainClass>
 			    </manifest>
 			  </archive>
 			</configuration>

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Built-By: tanvirhasan
 Build-Jdk: 11.0.2
-Main-Class: com.student.com.tanvir.Main
+Main-Class: com.student.com.tanvir.main.Main
 Created-By: Maven Integration for Eclipse
 
